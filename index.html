@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Barcode & QR Code Generator - Dark Mode</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+  <h2>Barcode & QR Code Generator</h2>
+
+  <label for="contentType">Select content type:</label>
+  <select id="contentType" onchange="updatePlaceholder()">
+    <option value="text">Plain Text</option>
+    <option value="url">URL</option>
+    <option value="email">Email</option>
+    <option value="phone">Phone Number</option>
+    <option value="numeric">Numeric Code</option>
+  </select>
+
+  <label for="codeType">Select code type:</label>
+  <select id="codeType" onchange="updatePlaceholder()">
+    <option value="CODE128">Code 128 (1D Barcode)</option>
+    <option value="EAN13">EAN-13 (1D Barcode)</option>
+    <option value="UPC">UPC (1D Barcode)</option>
+    <option value="QR">QR Code</option>
+  </select>
+
+  <input type="text" id="contentInput" placeholder="Enter content here" autocomplete="off" />
+  <button onclick="generateCode()">Generate</button>
+  <button id="downloadBtn" onclick="downloadCode()" disabled>Download</button>
+
+  <div id="codeContainer">
+    <svg id="barcode" style="display:none;"></svg>
+    <canvas id="qrcode" style="display:none;"></canvas>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
